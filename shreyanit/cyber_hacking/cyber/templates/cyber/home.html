@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 20px;
+            background: linear-gradient(100deg, blue, green);
+        }
+
+        h1 {
+            background-color: black;
+            color: orangered;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin-top: 20px;
+            background-color: orangered;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: blue;
+            background-color: orangered;
+        }
+
+        .dashboard{
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .chartsheet{
+            width: 88%;
+            background-color: white;
+            margin-top: 30px;
+        }
+
+        .chartsheet img{
+            width: 100%;
+        }
+
+        .side-bar{
+            width:22%;
+            min-height: 65vh;
+            margin-top: 30px;
+            background-color: blue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            padding: 100px 0;
+        }
+
+        .side-bar a{
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Modeling and Prediciting Cyber Hacking Breaches</h1>
+        <nav>
+            <a href="analysis.html">ANALYSIS</a>
+            <a href="add_data.html">ADD DATA</a>
+            <a href="malware_data.html">MALWARE DATA</a>
+            <a href="unmalware_data.html">UNMALWARE DATA</a>
+            <a href="breaches_analysis.html">BREACHES ANALYSIS</a>
+            <a href="graphical_analysis.html">GRAPHICAL ANALYSIS</a>
+            <a href="/login/">LOGOUT</a>
+        </nav>
+    </div>
+    <div class="dashboard">
+        <div class="chartsheet">
+            <img src="{% static 'images/dashboard.jpeg' %}" alt="chartsheet">
+        </div>
+        <div class="side-bar">
+            <a href="spline.html">SPLINE CHART</a>
+            <a href="bar.html">BAR CHART</a>
+            <a href="column.html">COLUMN CHART</a>
+        </div>
+    </div>
+</body>
+
+</html>

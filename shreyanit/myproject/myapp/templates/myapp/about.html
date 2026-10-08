@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(173, 162, 240);
+        }
+
+        .contact-section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .contact-info {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            flex: 1;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: 3;
+            border: 2px solid black;
+            background-color: rgb(241, 233, 153);
+            box-shadow: 0 0 10px rgb(0 0 0);
+            border-radius: 20px;
+        }
+
+        .contact-form-container {
+            width: 40%;
+            text-align: center;
+            line-height: 3;
+            border: 2px solid black;
+            min-height: 250px;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(158, 241, 214);
+            box-shadow: 0 0 10px rgb(0 0 0);
+            border-radius: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: coral;
+            font-size: 40px;
+        }
+
+        .form-group {
+            width: 100%;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+            color: coral;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            display: inline-block;
+            width: 250px;
+            padding: 7px;
+            border: 2px solid black;
+        }
+
+        .submit-button {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 30px;
+            border-radius: 20px;
+            background-color: rgb(17, 137, 235);
+            color: white;
+            margin: 30px 0;
+        }
+
+        .about-section {
+            width: 100%;
+            padding: 50px 20px;
+            
+        }
+
+        .about-container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        .about-card {
+            flex: 1;
+            padding: 30px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        .about-card summary {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .about-card summary h2 {
+            color: coral;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .about-icon {
+            font-size: 30px;
+        }
+
+        .about-content {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid gray;
+        }
+
+        .about-content p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .site-footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #222;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="contact-section">
+
+        <div class="contact-info">
+
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3 class="contact-title">Our Office</h3>
+                <p class="contact-text">
+                    Canara Bank, Madhapur, Hyderabad - 500081
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3 class="contact-title">Phone Number</h3>
+                <p class="contact-text">
+                    9505376347
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-text">
+                    yaswanthkumar.p@Shreyanit.in
+                </p>
+            </div>
+
+        </div>
+
+        <div class="contact-form-container">
+            <h2 class="contact-heading">Contact Us</h2>
+
+            <form class="contact-form">
+
+                <div class="form-group">
+                    <label class="form-label">Username:</label>
+                    <input class="form-input" type="text" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email:</label>
+                    <input class="form-input" type="email" placeholder="Enter your valid email">
+                </div>
+
+                <div class="form-button-container">
+                    <button class="submit-button" type="button">
+                        Submit
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+
+    <section class="about-section">
+
+        <div class="about-container">
+
+            <details class="about-card">
+                <summary>
+                    <span class="about-icon">👨‍💻</span>
+                    <h2>About Me</h2>
+                </summary>
+
+                <div class="about-content">
+
+                    <p>
+                        I am a <span class="highlight">passionate and motivated</span>
+                        individual who is interested in technology and software
+                        development. I enjoy learning new technologies, solving
+                        problems, and building my technical skills through practical
+                        projects.
+                    </p>
+
+                    <p>
+                        I am a quick learner, adaptable, and always willing to take
+                        on new challenges. My goal is to grow as a professional,
+                        gain real-world experience, and contribute to the success
+                        of the organization I work with.
+                    </p>
+
+                </div>
+            </details>
+
+            <details class="about-card">
+                <summary>
+                    <span class="about-icon">🚀</span>
+                    <h2>Why Should We Hire You?</h2>
+                </summary>
+
+                <div class="about-content">
+
+                    <p>
+                        You should hire me because I am a
+                        <span class="highlight">quick learner, responsible,
+                            and committed</span> to improving my skills.
+                    </p>
+
+                    <p>
+                        I may not know everything from day one, but I am confident
+                        in my ability to learn quickly and adapt to new situations.
+                        I take my responsibilities seriously, work well with others,
+                        and put consistent effort into everything I do.
+                    </p>
+
+                    <p>
+                        I am eager to gain practical experience, contribute to the
+                        team, and grow along with the company.
+                    </p>
+
+                </div>
+            </details>
+
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        &copy; Shreyan IT Solutions. All rights reserved.
+    </footer>
+</body>
+</html>
