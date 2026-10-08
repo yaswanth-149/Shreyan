@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modeling and Predicting Cyber Hacking Breaches</title>
+    <style>
+        body {
+            background-color: #2b3b4c;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 1. Black Top Title */
+        .title-banner {
+            background-color: #000000;
+            color: #d9534f;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* 2. Orange Top Navigation Menu */
+        .nav-menu {
+            background-color: #ff4500;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .nav-menu a:hover {
+            color: yellow;
+        }
+
+        /* 3. Main Dashboard Layout */
+        .main-container {
+            width: 90%;
+            margin: 30px auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Left Content Box */
+        .content-box {
+            background-color: white;
+            width: 75%;
+            min-height: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Right Blue Sidebar */
+        .sidebar {
+            background-color: #0000ff;
+            width: 25%;
+            padding: 40px 10px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* 4. Simple Form Styles (Add Data Tab) */
+        .simple-form {
+            background-color: #008080;
+            padding: 20px;
+            width: 320px;
+            margin: 0 auto;
+            color: black;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: inline-block;
+            width: 140px;
+        }
+
+        .form-group input {
+            width: 140px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .submit-btn {
+            background-color: #006400;
+            color: white;
+            padding: 6px 15px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto 0 auto;
+        }
+
+        /* 5. Simple Green Table Styles */
+        .simple-table {
+            width: 100%;
+            background-color: #052c17;
+            color: white;
+            border-collapse: collapse;
+        }
+
+        .simple-table th {
+            background-color: #008000;
+            color: yellow;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .simple-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #0a4d28;
+        }
+
+        /* 6. Simple Bar Chart Styles */
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .year {
+            width: 50px;
+            font-weight: bold;
+        }
+
+        .bar-bg {
+            background-color: #eee;
+            flex: 1;
+            height: 18px;
+        }
+
+        .bar-fill {
+            background-color: #ff4500;
+            height: 100%;
+            color: white;
+            font-size: 11px;
+            text-align: right;
+            padding-right: 5px;
+            line-height: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Header Title -->
+    <div class="title-banner">
+        Modeling and Predicting Cyber Hacking Breaches
+    </div>
+
+    <!-- 2. Navigation Buttons -->
+    <div class="nav-menu">
+        <a href="?tab=analysis">ANALYSIS</a>
+        <a href="?tab=add_data">ADD DATA</a>
+        <a href="?tab=malware_data">MALWARE DATA</a>
+        <a href="?tab=unmalware_data">UNMALWARE DATA</a>
+        <a href="?tab=breaches_analysis">BREACHES ANALYSIS</a>
+        <a href="?tab=graphical_analysis">GRAPHICAL ANALYSIS</a>
+        <a href="{% url 'logout' %}">LOGOUT</a>
+    </div>
+
+    <!-- 3. Dashboard Body -->
+    <div class="main-container">
+
+        <!-- Left Display Area -->
+        <div class="content-box">
+
+            <!-- TAB 1: ADD DATA FORM -->
+            {% if request.GET.tab == 'add_data' %}
+                <div class="simple-form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group"><label>ENTITY:</label><input type="text" name="entity"></div>
+                        <div class="form-group"><label>YEAR:</label><input type="text" name="year"></div>
+                        <div class="form-group"><label>RECORDS:</label><input type="text" name="records"></div>
+                        <div class="form-group"><label>ORG TYPE:</label><input type="text" name="org_type"></div>
+                        <div class="form-group"><label>METHODS:</label><input type="text" name="methods"></div>
+                        <div class="form-group"><label>ADD DATA:</label><input type="text" name="add_data"></div>
+                        <div class="form-group"><label>TIME:</label><input type="text" name="time"></div>
+                        <button type="submit" class="submit-btn">SUBMIT</button>
+                    </form>
+                </div>
+
+            <!-- TAB 2: BREACHES ANALYSIS -->
+            {% elif request.GET.tab == 'breaches_analysis' %}
+                <table class="simple-table">
+                    <tr><th>MALWARE NAME</th><th>NETWORK TRAFFIC POSITION</th><th>METHOD</th></tr>
+                    <tr><td>Man-in-the-middle (MitM) attack</td><td>hacked</td><td>48</td></tr>
+                    <tr><td>Phishing and spear phishing attacks</td><td>poor security</td><td>4</td></tr>
+                    <tr><td>Drive-by attack</td><td>hacked</td><td>36</td></tr>
+                    <tr><td>Password attack</td><td>lost / stolen media</td><td>10</td></tr>
+                    <tr><td>SQL injection attack</td><td>hacked</td><td>34</td></tr>
+                </table>
+
+            <!-- TAB 3: UNMALWARE DATA -->
+            {% elif request.GET.tab == 'unmalware_data' %}
+                <table class="simple-table">
+                    <tr><th>DATA</th><th>ENTITY</th><th>ATTACK RECORDS</th></tr>
+                    <tr><td>https://modelingandpredictioncyberhackingbreaches.com</td><td>Accendo Insurance Co.</td><td>Unmalware Data</td></tr>
+                    <tr><td>https://modelingandpredictioncyberhackingbreaches.com</td><td>Aetna</td><td>Unmalware Data</td></tr>
+                    <tr><td>https://modelingandpredictioncyberhackingbreaches.com</td><td>Amazon.com</td><td>Unmalware Data</td></tr>
+                </table>
+
+            <!-- TAB 4: MALWARE DATA -->
+            {% elif request.GET.tab == 'malware_data' %}
+                <table class="simple-table">
+                    <tr><th>DATA</th><th>ENTITY</th><th>ATTACK RECORDS</th></tr>
+                    <tr><td>https://modelingandpredictioncyberhackingbreaches.com</td><td>AOL</td><td>hacked</td></tr>
+                    <tr><td>https://modelingandpredictioncyberhackingbreaches.com</td><td>Apple</td><td>hacked</td></tr>
+                </table>
+
+            <!-- TAB 5: GRAPHICAL ANALYSIS (DEFAULT) -->
+            {% else %}
+                <h3 style="text-align:center;">MALWARE (BREACHES) ANALYSIS</h3>
+                <br>
+                <div class="chart-row"><span class="year">2004</span><div class="bar-bg"><div class="bar-fill" style="width: 5%;">2%</div></div></div>
+                <div class="chart-row"><span class="year">2005</span><div class="bar-bg"><div class="bar-fill" style="width: 12%;">12%</div></div></div>
+                <div class="chart-row"><span class="year">2006</span><div class="bar-bg"><div class="bar-fill" style="width: 12%;">12%</div></div></div>
+                <div class="chart-row"><span class="year">2007</span><div class="bar-bg"><div class="bar-fill" style="width: 24%;">24%</div></div></div>
+                <div class="chart-row"><span class="year">2008</span><div class="bar-bg"><div class="bar-fill" style="width: 32%;">32%</div></div></div>
+                <div class="chart-row"><span class="year">2009</span><div class="bar-bg"><div class="bar-fill" style="width: 28%;">28%</div></div></div>
+                <div class="chart-row"><span class="year">2010</span><div class="bar-bg"><div class="bar-fill" style="width: 40%;">40%</div></div></div>
+                <div class="chart-row"><span class="year">2011</span><div class="bar-bg"><div class="bar-fill" style="width: 71%;">71%</div></div></div>
+                <div class="chart-row"><span class="year">2012</span><div class="bar-bg"><div class="bar-fill" style="width: 50%;">50%</div></div></div>
+                <div class="chart-row"><span class="year">2013</span><div class="bar-bg"><div class="bar-fill" style="width: 56%;">56%</div></div></div>
+                <div class="chart-row"><span class="year">2014</span><div class="bar-bg"><div class="bar-fill" style="width: 50%;">50%</div></div></div>
+                <div class="chart-row"><span class="year">2015</span><div class="bar-bg"><div class="bar-fill" style="width: 56%;">56%</div></div></div>
+                <div class="chart-row"><span class="year">2016</span><div class="bar-bg"><div class="bar-fill" style="width: 42%;">42%</div></div></div>
+                <div class="chart-row"><span class="year">2017</span><div class="bar-bg"><div class="bar-fill" style="width: 18%;">18%</div></div></div>
+                <div class="chart-row"><span class="year">2018</span><div class="bar-bg"><div class="bar-fill" style="width: 44%;">44%</div></div></div>
+            {% endif %}
+
+        </div>
+
+        <!-- Right Side Links -->
+        <div class="sidebar">
+            <a href="?tab=graphical_analysis">SPLINE CHART</a>
+            <a href="?tab=graphical_analysis">BAR CHART</a>
+            <a href="?tab=graphical_analysis">COLUMN CHART</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
