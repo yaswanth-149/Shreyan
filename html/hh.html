@@ -1,0 +1,581 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shreyan IT Solutions</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #111;
+            background-color: #fff;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            border-radius: 23px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            padding: 10px;
+        }
+
+        nav a {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        /* ================= LOGIN ================= */
+
+        .log {
+            display: flex;
+            gap: 10px;
+        }
+
+        .log a {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .log a:hover {
+            background-color: #0056b3;
+        }
+
+        /* ================= MAIN SECTION ================= */
+
+        .main {
+            margin-top: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 35px;
+            padding: 0 20px;
+        }
+
+        .main h1 {
+            max-width: 1100px;
+            font-size: 50px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .main p {
+            max-width: 1000px;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .explore {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .explore a {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .explore a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* ================= ACHIEVEMENTS ================= */
+
+        .work {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+            margin-top: 100px;
+            padding: 0 20px;
+        }
+
+        .work h2 {
+            font-size: 35px;
+        }
+
+        .work h2 span {
+            color: #007bff;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 40px;
+
+            width: 100%;
+            max-width: 1100px;
+
+            margin: 0 auto;
+            padding: 40px;
+
+            border: 3px solid rgb(85, 85, 189);
+            border-radius: 40px;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 35px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* ================= COMPANY SECTION ================= */
+
+        .company {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 30px;
+        }
+
+        .company-image {
+            width: 500px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .company-content {
+            flex: 1;
+        }
+
+        .company h2 {
+            font-size: 35px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .company p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .company a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 12px 30px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .company a:hover {
+            background-color: #0056b3;
+        }
+
+        /* ================= TABLET ================= */
+
+        @media (max-width: 992px) {
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+
+            .main h1 {
+                font-size: 40px;
+            }
+
+            .section {
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .company {
+                gap: 30px;
+            }
+
+            .company h2 {
+                font-size: 30px;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .logo {
+                width: 180px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+
+            .log {
+                justify-content: center;
+            }
+
+            .main {
+                margin-top: 50px;
+            }
+
+            .main h1 {
+                font-size: 32px;
+            }
+
+            .main p {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+
+            .explore {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .explore a {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .work {
+                margin-top: 70px;
+            }
+
+            .work h2 {
+                font-size: 28px;
+            }
+
+            .section {
+                flex-direction: column;
+                width: 100%;
+                border-radius: 25px;
+            }
+
+            .stat {
+                width: 100%;
+            }
+
+            .company {
+                flex-direction: column;
+                text-align: center;
+                margin: 70px auto;
+            }
+
+            .company h2 {
+                font-size: 28px;
+            }
+
+            .company p {
+                font-size: 16px;
+            }
+        }
+
+        /* ================= SMALL MOBILE ================= */
+
+        @media (max-width: 480px) {
+
+            .header {
+                padding: 15px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .log a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .main h1 {
+                font-size: 27px;
+            }
+
+            .main p {
+                font-size: 16px;
+            }
+
+            .work h2 {
+                font-size: 24px;
+            }
+
+            .company h2 {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <img
+            class="logo"
+            src="https://www.shreyanit.in/wp-content/uploads/2026/08/cropped-Shreyan_IT_Solutions_Logo_Landscape_A4_page-0001.jpg"
+            alt="Shreyan IT Solutions Logo"
+        >
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="service.html">Service</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="log">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <main class="main">
+
+        <h1>
+            Shreyan IT Solutions - Empowering Businesses with
+            <br>
+            AI-Driven IT Services
+        </h1>
+
+        <p>
+            Welcome to Shreyan IT Solutions, your trusted partner in delivering
+            cutting-edge Information Technology (IT) services and AI-powered
+            solutions. We specialize in providing complete consulting, tailored
+            digital strategies, and flexible staff augmentation to meet your
+            evolving business needs. We are committed to on-time delivery,
+            budget-friendly solutions, and uncompromised quality—consistently
+            exceeding client expectations.
+        </p>
+
+        <div class="explore">
+            <a href="service.html">Explore Our Services</a>
+            <a href="solutions.html">Explore Our Solutions</a>
+        </div>
+
+    </main>
+
+
+    <!-- ================= ACHIEVEMENTS ================= -->
+
+    <section class="work">
+
+        <h2>
+            The Achievements That Define
+            <span>Shreyan IT!</span>
+        </h2>
+
+        <div class="section">
+
+            <!-- Happy Clients -->
+
+            <div class="stat">
+
+                <img
+                    src="https://th.bing.com/th/id/OIP.QLIIe6tQSlh_jHjTWNGq0gHaHa?w=176&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                    alt="Happy Clients"
+                >
+
+                <span class="stat-number">65+</span>
+
+                <div class="stat-label">
+                    Happy Clients
+                </div>
+
+            </div>
+
+
+            <!-- Successful Projects -->
+
+            <div class="stat">
+
+                <img
+                    src="https://th.bing.com/th/id/OIP.r15UoDMmYMAWVPuaH-9O9AHaHa?w=195&h=195&c=7&r=0&o=7&pid=1.7&rm=3"
+                    alt="Successful Projects"
+                >
+
+                <span class="stat-number">85+</span>
+
+                <div class="stat-label">
+                    Successful Projects Delivered
+                </div>
+
+            </div>
+
+
+            <!-- Skilled Experts -->
+
+            <div class="stat">
+
+                <img
+                    src="https://th.bing.com/th/id/OIP.IcQ6uANQ4umEIsrI8O2CLwHaHa?w=178&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                    alt="Skilled Experts"
+                >
+
+                <span class="stat-number">25+</span>
+
+                <div class="stat-label">
+                    Skilled Experts
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMPANY SECTION ================= -->
+
+    <section class="company">
+
+        <img
+            class="company-image"
+            src="https://www.shreyanit.in/wp-content/uploads/2025/06/team-working_.avif"
+            alt="Shreyan IT Solutions Team"
+        >
+
+        <div class="company-content">
+
+            <h2>
+                Innovative IT Solutions for Unparalleled Success
+            </h2>
+
+            <p>
+                Shreyan IT Solutions is a leading IT services company
+                specializing in delivering intelligent, AI-driven solutions
+                that empower businesses to transform, grow, and stay ahead
+                in the digital landscape.
+
+                Our core strength lies in offering full-lifecycle software
+                development, enterprise solutions (ERP, CRM), cloud
+                migration, big data applications, and advanced cybersecurity
+                services tailored to meet the unique needs of each client.
+
+                <br><br>
+
+                We are committed to delivering secure, scalable, and
+                data-centric solutions that not only drive operational
+                efficiency but also help businesses unlock new opportunities
+                through the power of technology.
+            </p>
+
+            <a href="know.html">Know More</a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+```
