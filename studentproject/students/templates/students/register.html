@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body {
+            margin-top: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        div {
+            background-color: aliceblue;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 220px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>registration</h1>
+    <div>
+        <!-- Django Feedback Messages -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p style="margin: 0;">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="enter your name"><br><br>
+
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="enter your name"><br><br>
+
+            <label>passward:</label>
+            <input type="password" name="password" placeholder="enter your password"><br><br>
+
+            <label>confirm passward:</label>
+            <input type="password" name="confirm_password" placeholder="enter your password"><br><br>
+
+            <button>Register</button>
+
+            <p>I have an account? <a href="login.html">Login</a></p>
+
+        </form>
+    </div>
+</body>
+
+</html>

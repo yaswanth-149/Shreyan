@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px 25px;
+            border: 1px solid #ddd
+        }
+
+        img {
+            border-radius: 23px;
+            box-shadow: 0 2px 3px rgb(0 0 0);
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+            padding: 25px;
+        }
+
+        nav a {
+            font-size: 20px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        .log {
+            padding: 20px;
+            word-spacing: 20px;
+        }
+
+        .log a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        .log a:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            background-image: url("https://www.shutterstock.com/image-vector/contact-us-customer-support-hotline-260nw-2561218445.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .contact-heading p {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-heading h2 {
+            text-align: center;
+            font-size: 50px;
+            margin-top: 10px;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            background-color: whitesmoke;
+            margin: 0 50px;
+        }
+
+        .contact-info {
+            width: 50%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            background-color: white;
+            color: black;
+        }
+
+        .contact-form {
+            width: 50%;
+            padding: 50px;
+            background-color: aqua;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+        }
+
+        .form-row{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-row label{
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .form-row input, .form-row select, .form-row textarea{
+            width: 250px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://www.shreyanit.in/wp-content/uploads/2026/08/cropped-Shreyan_IT_Solutions_Logo_Landscape_A4_page-0001.jpg"
+            width="200">
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="service.html">service</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="log">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        </div>
+    </div>
+    <h1> Contact Us</h1>
+    <div class="contact-section">
+
+        <div class="contact-heading">
+            <p>GET IN TOUCH</p>
+            <h2>Have questions? We're just one call away</h2>
+        </div>
+
+        <div class="contact-content">
+
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    <h3>📩 <br> info@shreyanit.in</h3>
+                    <p>Have a project in mind? Send a message.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📞 <br> 9652040022</h3>
+                    <p>Have a project in mind? Give me Missed Call.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>
+                        📍<br>
+                        Plot No 20 & 21, Door No 2/64/2/A, 2nd Floor,
+                        Beside Bata Show Room Lane, Megha Hills,
+                        Madhapur, Hyderabad-500081
+                    </h3>
+                    <p>Join our growing team?</p>
+                </div>
+
+            </div>
+
+            <div class="contact-form">
+
+                <form>
+                    <div class="form-row">
+                        <label>Name:</label>
+                        <input type="text" placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Email:</label>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Phone Number:</label>
+                        <input type="tel" placeholder="Enter your number">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Select Your Service:</label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Select a service --</option>
+                            <option value="IT Services">IT Services</option>
+                            <option value="IT Staffing">IT Staffing</option>
+                            <option value="IT Support">IT Support</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Message:</label>
+                        <textarea rows="5" placeholder="Enter your message"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
