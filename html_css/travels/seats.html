@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBus - Select Seat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgb(255, 74, 74);
+            padding: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bolder;
+            color: floralwhite;
+        }
+
+        .logo span {
+            color: cyan;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            color: floralwhite;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: cyan;
+        }
+
+        .page-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 15px auto;
+        }
+
+        .booking-title {
+            text-align: center;
+            background: linear-gradient(135deg,
+                    rgb(255, 74, 74),
+                    #ff7676);
+            color: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .booking-title h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .booking-title p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .seat-layout {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .bus-front {
+            width: 100%;
+            height: 60px;
+            background-color: #eeeeee;
+            border-radius: 10px 10px 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .seats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 35px 1fr 1fr;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .seat:nth-child(4n + 1) {
+            grid-column: 1;
+        }
+
+        .seat:nth-child(4n + 2) {
+            grid-column: 2;
+        }
+
+        .seat:nth-child(4n + 3) {
+            grid-column: 4;
+        }
+
+        .seat:nth-child(4n + 4) {
+            grid-column: 5;
+        }
+
+        .seat {
+            height: 50px;
+            border: 2px solid #ddd;
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .seat:not(.occupied):hover {
+            background-color: #e8f8f8;
+            border-color: cyan;
+            color: #008b8b;
+            transform: scale(1.05);
+        }
+
+        .seat.selected {
+            background-color: rgb(255, 74, 74);
+            border-color: rgb(255, 74, 74);
+            color: white;
+        }
+
+        .seat.occupied {
+            background-color: #555;
+            border-color: #555;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .seat-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            background-color: white;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .seat-info span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .seat-info i {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        .seat-info .available {
+            background-color: white;
+            border: 2px solid #ddd;
+        }
+
+        .seat-info .selected {
+            background-color: rgb(255, 74, 74);
+        }
+
+        .seat-info .booked {
+            background-color: #555;
+        }
+
+        .selection-summary {
+            background-color: white;
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .selection-summary h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .selection-summary p {
+            color: rgb(255, 74, 74);
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .primary-btn {
+            border: none;
+            background-color: rgb(255, 74, 74);
+            color: white;
+
+            padding: 12px 25px;
+            border-radius: 7px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #e53935;
+            transform: scale(1.04);
+        }
+
+        .primary-btn a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Yash<span>Bus</span> 🚌</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-container">
+
+        <div class="booking-title">
+            <h1>Select Your Seat</h1>
+            <p id="busName"></p>
+        </div>
+
+        <div class="seat-layout">
+
+            <div class="bus-front">
+                <span>🚍 DRIVER</span>
+            </div>
+
+            <div class="seats">
+
+                <button type="button" class="seat occupied">A1</button>
+                <button type="button" class="seat">A2</button>
+
+                <button type="button" class="seat">A3</button>
+                <button type="button" class="seat occupied">A4</button>
+
+                <button type="button" class="seat">B1</button>
+                <button type="button" class="seat">B2</button>
+
+                <button type="button" class="seat occupied">B3</button>
+                <button type="button" class="seat">B4</button>
+
+                <button type="button" class="seat">C1</button>
+                <button type="button" class="seat">C2</button>
+
+                <button type="button" class="seat">C3</button>
+                <button type="button" class="seat occupied">C4</button>
+
+                <button type="button" class="seat">D1</button>
+                <button type="button" class="seat">D2</button>
+
+                <button type="button" class="seat">D3</button>
+                <button type="button" class="seat">D4</button>
+
+                <button type="button" class="seat">E1</button>
+                <button type="button" class="seat">E2</button>
+
+                <button type="button" class="seat">E3</button>
+                <button type="button" class="seat">E4</button>
+
+                 <button type="button" class="seat occupied">F1</button>
+                <button type="button" class="seat">F2</button>
+
+                <button type="button" class="seat">F3</button>
+                <button type="button" class="seat occupied">F4</button>
+
+                <button type="button" class="seat">G1</button>
+                <button type="button" class="seat">G2</button>
+
+                <button type="button" class="seat occupied">G3</button>
+                <button type="button" class="seat">G4</button>
+
+                <button type="button" class="seat">H1</button>
+                <button type="button" class="seat">H2</button>
+
+                <button type="button" class="seat">H3</button>
+                <button type="button" class="seat occupied">H4</button>
+
+                <button type="button" class="seat">I1</button>
+                <button type="button" class="seat">I2</button>
+
+                <button type="button" class="seat">I3</button>
+                <button type="button" class="seat">I4</button>
+
+                <button type="button" class="seat">J1</button>
+                <button type="button" class="seat">J2</button>
+
+                <button type="button" class="seat">J3</button>
+                <button type="button" class="seat">J4</button>
+
+            </div>
+
+        </div>
+
+        <div class="seat-info">
+            <span><i class="available"></i> Available</span>
+            <span><i class="selected"></i> Selected</span>
+            <span><i class="booked"></i> Booked</span>
+        </div>
+
+        <div class="selection-summary">
+
+            <h3>Selected Seat</h3>
+            <p id="selectedSeat">None</p>
+
+            <button type="button" class="primary-btn">
+                <a href="passenger.html">Continue</a>
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

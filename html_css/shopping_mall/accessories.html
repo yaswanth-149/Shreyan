@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories | SHOPMALL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif
+        }
+
+        .site-header {
+            width: 100%;
+            height: 75px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: auto;
+            height: 75px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            color: #111;
+            font-size: 30px;
+            font-weight: bolder;
+            text-decoration: none;
+            transition: .3s
+        }
+
+        .logo:hover {
+            transform: translateY(5px);
+            background-color: aqua;
+            color: rgb(173, 211, 34)
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px
+        }
+
+        .main-nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: .3s
+        }
+
+        .main-nav a:hover {
+            color: #e91e63
+        }
+
+        .dropdown {
+            position: relative
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: -20px;
+            width: 180px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .12)
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 9px 5px
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block
+        }
+
+        main {
+            padding-top: 75px;
+            background-color: #f8f8f8
+        }
+
+        .products-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 30px 80px
+        }
+
+        .products-heading {
+            text-align: center;
+            margin-bottom: 55px
+        }
+
+        .products-heading p {
+            color: #e91e63;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px
+        }
+
+        .products-heading h1 {
+            font-size: 42px;
+            color: #111;
+            margin-bottom: 12px
+        }
+
+        .products-heading span {
+            color: #666;
+            font-size: 16px
+        }
+
+        .product-section {
+            margin-bottom: 65px;
+            scroll-margin-top: 95px
+        }
+
+        .product-section h2 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e91e63
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+            transition: .3s ease
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .15)
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            display: block;
+            object-fit: cover;
+            transition: transform .4s ease
+        }
+
+        .product-card:hover img {
+            transform: scale(1.04)
+        }
+
+        .product-card h3 {
+            color: #222;
+            font-size: 18px;
+            margin: 18px 18px 8px
+        }
+
+        .product-card p {
+            color: #777;
+            font-size: 14px;
+            margin: 0 18px 12px
+        }
+
+        .sizes {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 12px 18px 15px
+        }
+
+        .sizes span {
+            width: 100%;
+            color: #555;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 2px
+        }
+
+        .sizes button {
+            width: auto;
+            min-width: 42px;
+            height: 32px;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .sizes button:hover {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff
+        }
+
+        .sizes button:focus {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff;
+            outline: none
+        }
+
+        .product-card strong {
+            display: block;
+            color: #e91e63;
+            font-size: 18px;
+            margin: 0 18px 20px
+        }
+
+        .site-footer {
+            background: #111;
+            color: #fff;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 55px 30px;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 28px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 17px;
+            margin-bottom: 18px;
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: .3s;
+        }
+
+        .footer-column a:hover {
+            color: #e91e63;
+            padding-left: 4px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 12px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            margin-left: 20px;
+        }
+
+        .footer-bottom a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="shopping.html" class="logo">CITYMALL</a>
+            <nav class="main-nav">
+                <a href="shopping.html">Home</a>
+                <a href="men.html">Men</a>
+                <a href="women.html">Women</a>
+                <a href="kid.html">Kids</a>
+                <a href="footwear.html">Footwear</a>
+                <div class="dropdown">
+                    <a href="accessories.html">Accessories</a>
+                    <div class="dropdown-menu">
+                        <a href="#bags">Bags</a>
+                        <a href="#watches">Watches</a>
+                        <a href="#belts">Belts</a>
+                        <a href="#wallets">Wallets</a>
+                        <a href="#jewellery">Jewellery</a>
+                        <a href="#sunglasses">Sunglasses</a>
+                    </div>
+                </div>
+                <a href="beauty.html">Beauty</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="products-page">
+            <div class="products-heading">
+                <p>SHOPMALL ACCESSORIES</p>
+                <h1>Accessories Collection</h1>
+                <span>Complete your look with stylish accessories for every occasion.</span>
+            </div>
+            <section class="product-section" id="bags">
+                <h2>Bags</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://assets.myntassets.com/w_412,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/JUNE/10/vPietEth_2726db25660d4b3fb7be8eaafa4f5096.jpg" alt="Leather Handbag">
+                        <h3>Classic Leather Handbag</h3>
+                        <p>Elegant Everyday Handbag</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹1,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQerCzO-coVFDr3THke2p7ZmkTgH1fuzTEiuQcTyepFA&s=10" alt="Shoulder Bag">
+                        <h3>Stylish Shoulder Bag</h3>
+                        <p>Trendy Casual Bag</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Tan</button>
+                        </div>
+                        <strong>₹1,599</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_uvPOgxV0k3H-l3mkWiW6nDrXmKp3FSoyFnDA7GmFA&s" alt="Backpack">
+                        <h3>Everyday Backpack</h3>
+                        <p>Spacious Casual Backpack</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Blue</button>
+                        </div>
+                        <strong>₹1,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmcqRGzpvoArnFs4qeK66v1CLfCa921ioQszuAw6bnw&s" alt="Travel Bag">
+                        <h3>Premium Travel Bag</h3>
+                        <p>Large Weekend Travel Bag</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Grey</button>
+                        </div>
+                        <strong>₹2,299</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="watches">
+                <h2>Watches</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldsjiSMcmZqaoCL5R_wxIwn4efEwUEOmEJ2UQurxP6Q&s=10" alt="Classic Watch">
+                        <h3>Classic Analog Watch</h3>
+                        <p>Elegant Stainless Steel Design</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹2,499</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQtK_JF195Fv1B9QRzTLJH8zbJdOC-bXKrA1m4NbynNg&s=10" alt="Leather Watch">
+                        <h3>Leather Strap Watch</h3>
+                        <p>Classic Premium Style</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹1,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTptOTaev9DVqJC944qus27O4oaamyDrRmx-i0Jlh1TA&s=10" alt="Sports Watch">
+                        <h3>Modern Sports Watch</h3>
+                        <p>Stylish Everyday Watch</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Blue</button>
+                        </div>
+                        <strong>₹2,799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_48kUqc9xPrngJKbt9NATtcV0o_5qO-e1BGVeUZ-DDg&s" alt="Luxury Watch">
+                        <h3>Premium Luxury Watch</h3>
+                        <p>Elegant Formal Collection</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Gold</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹3,999</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="belts">
+                <h2>Belts</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeP5etHpHXKu9v8NbYwLSyjNZX1kbS7uUpX_1G11eMrQ&s=10" alt="Leather Belt">
+                        <h3>Classic Leather Belt</h3>
+                        <p>Premium Genuine Leather</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">30</button>
+                            <button type="button">32</button>
+                            <button type="button">34</button>
+                            <button type="button">36</button>
+                            <button type="button">38</button>
+                        </div>
+                        <strong>₹799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2jUokLzokbXibo8LgS1hDivDyy4YD8933QU0i9IEAhQ&s" alt="Formal Belt">
+                        <h3>Formal Black Belt</h3>
+                        <p>Smart Office Wear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">30</button>
+                            <button type="button">32</button>
+                            <button type="button">34</button>
+                            <button type="button">36</button>
+                            <button type="button">38</button>
+                        </div>
+                        <strong>₹699</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy8FvRIBhxYsBPbjQobzC4dTg9N8hKaM-YdsF0yzUhTA&s=10" alt="Casual Belt">
+                        <h3>Casual Brown Belt</h3>
+                        <p>Everyday Stylish Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">30</button>
+                            <button type="button">32</button>
+                            <button type="button">34</button>
+                            <button type="button">36</button>
+                            <button type="button">38</button>
+                        </div>
+                        <strong>₹749</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaTamsKSDMRCNqN1vrYx-9fatH3FQzQPC7IdmvJUPCA&s=10" alt="Canvas Belt">
+                        <h3>Canvas Casual Belt</h3>
+                        <p>Comfortable Everyday Belt</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">30</button>
+                            <button type="button">32</button>
+                            <button type="button">34</button>
+                            <button type="button">36</button>
+                            <button type="button">38</button>
+                        </div>
+                        <strong>₹599</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="wallets">
+                <h2>Wallets</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmaXysjf36EVDzdkL6QVesMT0pR1K9wJh5rxXI6tGhoA&s=10" alt="Leather Wallet">
+                        <h3>Classic Leather Wallet</h3>
+                        <p>Premium Compact Wallet</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5TjGRTfwo7Yt4-Tmu6AOAHAKSEPc_FQiydHKwxEufLA&s=10" alt="Slim Wallet">
+                        <h3>Slim Card Wallet</h3>
+                        <p>Minimal Everyday Wallet</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Blue</button>
+                        </div>
+                        <strong>₹699</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmL3eT1kesb0RdZlmd3n_CFtIKN5d5XUXsQwnpcZMHPw&s=10" alt="Bifold Wallet">
+                        <h3>Classic Bifold Wallet</h3>
+                        <p>Spacious Card Holder</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-RZmgZ-y9iAM7qBpYloD6WCBbgFNljImnhuH7ut7O0w&s=10" alt="Travel Wallet">
+                        <h3>Premium Travel Wallet</h3>
+                        <p>Organized Travel Design</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Grey</button>
+                        </div>
+                        <strong>₹999</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="jewellery">
+                <h2>Jewellery</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc1eXTjpkPHj81II7bDo6Me-RSAbV5soAakQ9BB5qUDA&s=10" alt="Necklace">
+                        <h3>Elegant Necklace</h3>
+                        <p>Beautiful Fashion Necklace</p>
+                        <div class="sizes">
+                            <span>Style:</span>
+                            <button type="button">Gold</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹1,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-g7VH0H0CgGyvDt6368pYqdNio2AaiulLVPzqwOBBtQ&s=10" alt="Earrings">
+                        <h3>Classic Earrings</h3>
+                        <p>Elegant Everyday Earrings</p>
+                        <div class="sizes">
+                            <span>Style:</span>
+                            <button type="button">Gold</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_HWL6Sly1ivg5xWA_A0skekK0-rLmBVcjjKXBAZEtXg&s=10" alt="Bracelet">
+                        <h3>Stylish Bracelet</h3>
+                        <p>Trendy Fashion Bracelet</p>
+                        <div class="sizes">
+                            <span>Style:</span>
+                            <button type="button">Gold</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://d9creation.com/wp-content/uploads/2026/06/photo_2026-06-09_14-02-35.jpg" alt="Ring">
+                        <h3>Elegant Fashion Ring</h3>
+                        <p>Simple Premium Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                        </div>
+                        <strong>₹699</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="sunglasses">
+                <h2>Sunglasses</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1kMmK3XdE_sKuOue93IBd7XIenNZcps5g0mvC9KKHJg&s=10" alt="Classic Sunglasses">
+                        <h3>Classic Black Sunglasses</h3>
+                        <p>Stylish Everyday Eyewear</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR53Su2mbMVYss7Ue-ohUG6Y2MTjmvgtXKdEjDsw3u4ZQ&s=10" alt="Aviator Sunglasses">
+                        <h3>Classic Aviator Sunglasses</h3>
+                        <p>Timeless Aviator Design</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Gold</button>
+                            <button type="button">Silver</button>
+                        </div>
+                        <strong>₹1,199</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmvCkphVW-O4vADTOR_N1mj-scsGsoHKWJ1MmuOafcig&s=10" alt="Round Sunglasses">
+                        <h3>Round Fashion Sunglasses</h3>
+                        <p>Trendy Modern Eyewear</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Brown</button>
+                        </div>
+                        <strong>₹1,099</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Hoy7NcNjJkLEuOdHmS_oFRG8AEhHZ9y_j1GKETUnZg&s=10" alt="Wayfarer Sunglasses">
+                        <h3>Classic Wayfarer Sunglasses</h3>
+                        <p>Smart Casual Eyewear</p>
+                        <div class="sizes">
+                            <span>Color:</span>
+                            <button type="button">Black</button>
+                            <button type="button">Blue</button>
+                        </div>
+                        <strong>₹1,299</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>CITYMALL</h3>
+                <p>Your one-stop destination for fashion, beauty, footwear and more.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <a href="women.html">Women</a>
+                <a href="men.html">Men</a>
+                <a href="kid.html">Kids</a>
+                <a href="footwear.html">Footwear</a>
+            </div>
+            <div class="footer-column">
+                <h4>Categories</h4>
+                <a href="accessories.html">Accessories</a>
+                <a href="beauty.html">Beauty</a>
+                <a href="#">Offers</a>
+                <a href="#">New Arrivals</a>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping &amp; Delivery</a>
+                <a href="#">Returns &amp; Exchange</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CITYMALL. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

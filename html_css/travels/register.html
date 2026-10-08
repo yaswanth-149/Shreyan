@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBus - Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgb(255, 74, 74);
+            padding: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bold;
+            color: floralwhite;
+        }
+
+        .logo span {
+            color: cyan;
+        }
+
+        .auth-page {
+            min-height: calc(100vh - 74px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            background-color: white;
+            padding: 35px;
+            border-radius: 14px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff0f0;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+
+        .auth-card h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .auth-card>p {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .auth-card form {
+            width: 100%;
+        }
+
+        .auth-card form>label:not(.terms) {
+            display: block;
+            color: #555;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .auth-card input[type="text"],
+        .auth-card input[type="email"],
+        .auth-card input[type="tel"],
+        .auth-card input[type="password"] {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 17px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .auth-card input[type="text"]:focus,
+        .auth-card input[type="email"]:focus,
+        .auth-card input[type="tel"]:focus,
+        .auth-card input[type="password"]:focus {
+            border-color: rgb(255, 74, 74);
+            box-shadow: 0 0 0 3px rgba(255, 74, 74, 0.1);
+        }
+
+        .auth-card input::placeholder {
+            color: #aaa;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 13px;
+            margin: 3px 0 22px;
+            cursor: pointer;
+        }
+
+        .terms input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: rgb(255, 74, 74);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .primary-btn {
+            width: 100%;
+            display:block;
+            text-align: center;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background-color: rgb(255, 74, 74);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #e53935;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(255, 74, 74, 0.3);
+        }
+
+        .auth-bottom {
+            margin-top: 25px !important;
+            margin-bottom: 0 !important;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .auth-bottom a {
+            color: rgb(255, 74, 74);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-bottom a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Yash<span>Bus</span> 🚌</a>
+        </nav>
+    </header>
+
+    <div class="auth-page">
+
+        <div class="auth-card">
+
+            <div class="auth-icon">👤</div>
+
+            <h1>Create Account</h1>
+            <p>Register with TravelBus.</p>
+
+            <form>
+
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" required>
+
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter phone number" required>
+
+                <label>Password</label>
+                <input type="password" autocomplete="new-password" placeholder="Create password" required>
+
+                <label>Confirm Password</label>
+                <input type="password" autocomplete="new-password" placeholder="Confirm password" required>
+
+                <label class="terms">
+                    <input type="checkbox" required>
+                    I agree to the Terms &amp; Conditions
+                </label>
+
+                <a href="login.html" class="primary-btn">Create Account</a>
+
+            </form>
+
+            <p class="auth-bottom">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Fashion | SHOPMALL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif
+        }
+
+        .site-header {
+            width: 100%;
+            height: 75px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: auto;
+            height: 75px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            color: #111;
+            font-size: 30px;
+            font-weight: bolder;
+            text-decoration: none;
+            transition: .3s
+        }
+
+        .logo:hover {
+            transform: translateY(5px);
+            background-color: aqua;
+            color: rgb(173, 211, 34)
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px
+        }
+
+        .main-nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: .3s
+        }
+
+        .main-nav a:hover {
+            color: #e91e63
+        }
+
+        .dropdown {
+            position: relative
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: -20px;
+            width: 180px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .12)
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 9px 5px
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block
+        }
+
+        main {
+            padding-top: 75px;
+            background-color: #f8f8f8
+        }
+
+        .products-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 30px 80px
+        }
+
+        .products-heading {
+            text-align: center;
+            margin-bottom: 55px
+        }
+
+        .products-heading p {
+            color: #e91e63;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px
+        }
+
+        .products-heading h1 {
+            font-size: 42px;
+            color: #111;
+            margin-bottom: 12px
+        }
+
+        .products-heading span {
+            color: #666;
+            font-size: 16px
+        }
+
+        .product-section {
+            margin-bottom: 65px;
+            scroll-margin-top: 95px
+        }
+
+        .product-section h2 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e91e63
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+            transition: .3s ease
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .15)
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            display: block;
+            object-fit: cover;
+            transition: transform .4s ease
+        }
+
+        .product-card:hover img {
+            transform: scale(1.04)
+        }
+
+        .product-card h3 {
+            color: #222;
+            font-size: 18px;
+            margin: 18px 18px 8px
+        }
+
+        .product-card p {
+            color: #777;
+            font-size: 14px;
+            margin: 0 18px 12px
+        }
+
+        .sizes {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 12px 18px 15px
+        }
+
+        .sizes span {
+            width: 100%;
+            color: #555;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 2px
+        }
+
+        .sizes button {
+            width: 38px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .sizes button:hover {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff
+        }
+
+        .sizes button:focus {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff;
+            outline: none
+        }
+
+        .product-card strong {
+            display: block;
+            color: #e91e63;
+            font-size: 18px;
+            margin: 0 18px 20px
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #111;
+            color: #fff;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 55px 30px;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 28px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 17px;
+            margin-bottom: 18px;
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: .3s;
+        }
+
+        .footer-column a:hover {
+            color: #e91e63;
+            padding-left: 4px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 12px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            margin-left: 20px;
+        }
+
+        .footer-bottom a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="shopping.html" class="logo">CITYMALL</a>
+            <nav class="main-nav">
+                <a href="shopping.html">Home</a>
+                <div class="dropdown">
+                    <a href="women.html">Women</a>
+                    <div class="dropdown-menu">
+                        <a href="#dresses">Dresses</a>
+                        <a href="#tops">Tops</a>
+                        <a href="#jeans">Jeans</a>
+                        <a href="#pants">Pants</a>
+                        <a href="#jackets">Jackets</a>
+                        <a href="#footwear">Footwear</a>
+                    </div>
+                </div>
+                <a href="men.html">Men</a>
+                <a href="kid.html">Kids</a>
+                <a href="footwear.html">Footwear</a>
+                <a href="accessories.html">Accessories</a>
+                <a href="beauty.html">Beauty</a>
+                <a href="#">Offers</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="products-page">
+            <div class="products-heading">
+                <p>SHOPMALL WOMEN</p>
+                <h1>Women's Fashion</h1>
+                <span>Discover the latest styles for every occasion.</span>
+            </div>
+            <section class="product-section" id="dresses">
+                <h2>Dresses</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLg9OjuX_X88Qedj61iwf8nEXfmL_Dz-_9OH41mLrRqw&s=10"
+                            alt="Floral Dress">
+                        <h3>Floral Summer Dress</h3>
+                        <p>Elegant Floral Print Dress</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,599</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTr0vJvx1zEKYbW0k4x3paEeRh7v_z4bT47vD9QIoEGw&s"
+                            alt="Maxi Dress">
+                        <h3>Elegant Maxi Dress</h3>
+                        <p>Comfortable Flowy Dress</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://bandhanipalace.co.in/images/product/2025/12/ka-1212-silk-designer-ready-made-party-wear-gown-dress-2025-12-22_18_32_49.jpeg"
+                            alt="Party Dress">
+                        <h3>Party Wear Dress</h3>
+                        <p>Stylish Evening Dress</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹2,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo68u4HkN_5YnBXaQ3Z8axTgd1aSHsrWPHHKHuZQWlZQ&s=10"
+                            alt="Casual Dress">
+                        <h3>Casual Midi Dress</h3>
+                        <p>Relaxed Fit Cotton Dress</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,499</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="tops">
+                <h2>Tops</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQskE1mYis2q-Etn3A1rEV-uvSpTKuoWuCbg0Ugn5Jtug&s=10"
+                            alt="Casual Top">
+                        <h3>Classic Casual Top</h3>
+                        <p>Soft Cotton Top</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWWiD0V3Ejbo6hnsE-PfLkPsKiL_PvaAaVT-3s95Z1iQ&s=10"
+                            alt="Crop Top">
+                        <h3>Stylish Crop Top</h3>
+                        <p>Modern Casual Fit</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹699</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://www.montecarlo.in/cdn/shop/files/226074471-1-36_3.jpg?v=1776939901&width=1080"
+                            alt="Printed Top">
+                        <h3>Printed Fashion Top</h3>
+                        <p>Trendy Printed Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDWUoVcPA0TofgvAkqpSL9001f7Va5z5TzT_K03Jmn7Q&s=10"
+                            alt="Blouse">
+                        <h3>Elegant Blouse</h3>
+                        <p>Premium Fabric Blouse</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹999</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="jeans">
+                <h2>Jeans</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE07KGf6Ly-vIN00gXV5yjWJhNEZ9Y5VvxP4oUMLxW9w&s=10"
+                            alt="Blue Jeans">
+                        <h3>Classic Blue Jeans</h3>
+                        <p>Slim Fit Denim</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2lUk8PhHNQ9nC1bjhhjjS6c9ScTAP7Nj1EU5ZpvhL3w&s=10"
+                            alt="Black Jeans">
+                        <h3>Black Skinny Jeans</h3>
+                        <p>Stretchable Denim</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ0BdHe-L3F_I21OnWWKgmJX726GdZFkNm6ebFOf1I7Q&s=10"
+                            alt="Wide Leg Jeans">
+                        <h3>Wide Leg Jeans</h3>
+                        <p>Relaxed Comfort Denim</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹2,099</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS-69SloOfR-pPrr_oLBlfuFT4ll7iAuCL9QxM95X9GA&s=10"
+                            alt="Mom Jeans">
+                        <h3>Classic Mom Jeans</h3>
+                        <p>High Waist Denim</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,799</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="pants">
+                <h2>Pants &amp; Trousers</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZGwE6u2Koh0bhaJoOEKDarqpr9ofWlgYOg5OsaY75Tw&s=10"
+                            alt="Formal Pants">
+                        <h3>Formal Trousers</h3>
+                        <p>Slim Fit Formal Pants</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,499</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKnrM6lPaAs1KjAoE0D_wUWNdaeyy1u9T-yI6jDa77Q&s=10"
+                            alt="Wide Leg Pants">
+                        <h3>Wide Leg Pants</h3>
+                        <p>Comfort Fit Trousers</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,399</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScciYqGJ4MuFl1gqYyJGgATXYWfoapSbugaoi3LlR6aw&s=10"
+                            alt="Cargo Pants">
+                        <h3>Utility Cargo Pants</h3>
+                        <p>Relaxed Fit Cargo</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,699</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkgy2TaJbKBcAJLheV8lGyw-smOootkYR1ev5ILc8Kdg&s"
+                            alt="Joggers">
+                        <h3>Everyday Joggers</h3>
+                        <p>Comfort Stretch Joggers</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹1,199</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="jackets">
+                <h2>Jackets</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlZSL8yufaZ_LfyRejVoRuLiK8Wy98sWrPzqTX123UIA&s=10"
+                            alt="Denim Jacket">
+                        <h3>Classic Denim Jacket</h3>
+                        <p>Regular Fit Denim</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹2,499</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2q9y483tAMYD4QUPU_2xx8dsv340Cp58Q9EiDzZ1dJg&s"
+                            alt="Leather Jacket">
+                        <h3>Premium Leather Jacket</h3>
+                        <p>Classic Stylish Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹3,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScv41rgOL9OifzyDCXXFvHnicoz0K84JskLt-dyKy-Nw&s"
+                            alt="Bomber Jacket">
+                        <h3>Classic Bomber Jacket</h3>
+                        <p>Lightweight Casual Jacket</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹2,799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe6wy48BpI449AqRt0sWWycYWBGCKlPteqL2cnzu439A&s=10"
+                            alt="Winter Jacket">
+                        <h3>Winter Hooded Jacket</h3>
+                        <p>Warm Winter Collection</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">S</button>
+                            <button type="button">M</button>
+                            <button type="button">L</button>
+                            <button type="button">XL</button>
+                            <button type="button">XXL</button>
+                        </div>
+                        <strong>₹2,999</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>CITYMALL</h3>
+                <p>Your one-stop destination for fashion, beauty, footwear and more.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <a href="women.html">Women</a>
+                <a href="men.html">Men</a>
+                <a href="kid.html">Kids</a>
+                <a href="footwear.html">Footwear</a>
+            </div>
+            <div class="footer-column">
+                <h4>Categories</h4>
+                <a href="accessories.html">Accessories</a>
+                <a href="beauty.html">Beauty</a>
+                <a href="#">Offers</a>
+                <a href="#">New Arrivals</a>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping &amp; Delivery</a>
+                <a href="#">Returns &amp; Exchange</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CITYMALL. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

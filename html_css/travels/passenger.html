@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBus - Passenger Details</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgb(255, 74, 74);
+            padding: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bold;
+            color: floralwhite;
+        }
+
+        .logo span {
+            color: cyan;
+        }
+
+        .page-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        .booking-title {
+            text-align: center;
+            background: linear-gradient(135deg, rgb(255, 74, 74), #ff7676);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .booking-title h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .booking-title p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .passenger-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .form-card,
+        .summary-card {
+            background-color: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-card h2,
+        .summary-card h2 {
+            font-size: 21px;
+            color: rgb(255, 74, 74);
+            margin-bottom: 25px;
+        }
+
+        .form-card label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 7px;
+        }
+
+        .form-card input,
+        .form-card select {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background-color: white;
+            color: #333;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-card input:focus,
+        .form-card select:focus {
+            border-color: rgb(255, 74, 74);
+            box-shadow: 0 0 0 3px rgba(255, 74, 74, 0.1);
+        }
+
+        .form-card input::placeholder {
+            color: #aaa;
+        }
+
+        .form-card .primary-btn {
+            width: 100%;
+            margin-top: 5px;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background-color: rgb(255, 74, 74);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-card .primary-btn:hover {
+            background-color: #e53935;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(255, 74, 74, 0.3);
+        }
+
+        .summary-card {
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-card h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .summary-card p {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .summary-card p:last-child {
+            border-bottom: none;
+            margin-top: 5px;
+            padding-top: 18px;
+            font-size: 17px;
+        }
+
+        .summary-card p:last-child strong,
+        .summary-card p:last-child span {
+            color: rgb(255, 74, 74);
+            font-weight: bold;
+        }
+
+        .summary-card span {
+            color: #333;
+            text-align: right;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Yash<span>Bus</span> 🚌</a>
+        </nav>
+    </header>
+
+    <div class="page-container">
+
+        <div class="booking-title">
+            <h1>Passenger Details</h1>
+            <p>Enter the passenger information.</p>
+        </div>
+
+        <div class="passenger-layout">
+
+            <div class="form-card">
+
+                <h2>Passenger Information</h2>
+
+                <form onsubmit="continuePassenger(event)">
+
+                    <label>Full Name</label>
+                    <input id="name" type="text" placeholder="Enter full name" required>
+
+                    <label>Age</label>
+                    <input id="age" type="number" placeholder="Enter age" required>
+
+                    <label>Gender</label>
+                    <select id="gender" required>
+                        <option value="">Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label>Phone Number</label>
+                    <input id="phone" type="tel" placeholder="Enter phone number" required>
+
+                    <label>Email</label>
+                    <input id="email" type="email" placeholder="Enter email" required>
+
+                    <button class="primary-btn" type="submit">
+                        Confirm Booking
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h2>Booking Summary</h2>
+
+                <p><strong>Bus:</strong> <span id="bus"></span></p>
+                <p><strong>Seat:</strong> <span id="seat"></span></p>
+                <p><strong>Boarding:</strong> <span id="boarding"></span></p>
+                <p><strong>Dropping:</strong> <span id="dropping"></span></p>
+                <p><strong>Fare:</strong> ₹<span id="price"></span></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

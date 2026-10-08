@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBus - Locations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+        }
+        
+        header {
+            width: 100%;
+            background-color: rgb(255, 74, 74);
+            padding: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bold;
+            color: floralwhite;
+        }
+
+        .logo span {
+            color: cyan;
+        }
+
+        .page-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        .booking-title {
+            text-align: center;
+            background: linear-gradient(135deg,
+                    rgb(255, 74, 74),
+                    #ff7676);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .booking-title h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .booking-title p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .location-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .location-card h2 {
+            color: rgb(255, 74, 74);
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+
+        .location-card label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .location-card select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background-color: white;
+            color: #333;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .location-card select:focus {
+            border-color: rgb(255, 74, 74);
+            box-shadow: 0 0 0 3px rgba(255, 74, 74, 0.1);
+        }
+
+        .location-card select:hover {
+            border-color: rgb(255, 74, 74);
+        }
+
+        .location-detail {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff5f5;
+            border-left: 4px solid rgb(255, 74, 74);
+            border-radius: 5px;
+        }
+
+        .location-detail strong {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .location-detail p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .map-box {
+            background-color: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .map-box h2 {
+            color: #333;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .map-box>p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .fake-map {
+            min-height: 150px;
+            background: linear-gradient(135deg,
+                    #e8f8f8,
+                    #f4ffff);
+
+            border: 2px dashed cyan;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+
+            padding: 25px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .fake-map span {
+            color: rgb(255, 74, 74);
+            font-size: 18px;
+        }
+
+        .primary-btn {
+            display: block;
+            width: 220px;
+            margin: 30px auto 10px;
+
+            padding: 13px 25px;
+
+            border: none;
+            border-radius: 7px;
+
+            background-color: rgb(255, 74, 74);
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #e53935;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(255, 74, 74, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Yash<span>Bus</span> 🚌</a>
+        </nav>
+    </header>
+
+    <div class="page-container">
+
+        <div class="booking-title">
+            <h1>Choose Your Locations</h1>
+            <p>Select your boarding and dropping points.</p>
+        </div>
+
+        <div class="location-grid">
+
+            <div class="location-card">
+
+                <h2>📍 Boarding Point</h2>
+
+                <label>Select Boarding Location</label>
+
+                <select id="boarding">
+                    <option value="">Select location</option>
+                    <option>Hyderabad - MGBS</option>
+                    <option>Hyderabad - Kukatpally</option>
+                    <option>Hyderabad - Gachibowli</option>
+                    <option>Hyderabad - LB Nagar</option>
+                </select>
+
+                <div class="location-detail">
+                    <strong>Pickup Locations</strong>
+                    <p>Choose a convenient pickup point.</p>
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h2>📍 Dropping Point</h2>
+
+                <label>Select Dropping Location</label>
+
+                <select id="dropping">
+                    <option value="">Select location</option>
+                    <option>Bengaluru - Majestic</option>
+                    <option>Bengaluru - Silk Board</option>
+                    <option>Bengaluru - Electronic City</option>
+                    <option>Bengaluru - Yeshwanthpur</option>
+                </select>
+
+                <div class="location-detail">
+                    <strong>Drop Locations</strong>
+                    <p>Choose where you want to get down.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="map-box">
+            <h2>🗺️ Route Map</h2>
+            <p>Hyderabad → Bengaluru</p>
+            <div class="fake-map">
+                📍 Hyderabad
+                <span>━━━━━━━━━━━━ 🚌 ━━━━━━━━━━━━</span>
+                📍 Bengaluru
+            </div>
+        </div>
+
+        <button type="button" class="primary-btn">
+            Continue
+        </button>
+
+    </div>
+
+</body>
+
+</html>

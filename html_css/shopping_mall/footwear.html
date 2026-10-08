@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footwear | SHOPMALL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif
+        }
+
+        .site-header {
+            width: 100%;
+            height: 75px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: auto;
+            height: 75px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            color: #111;
+            font-size: 30px;
+            font-weight: bolder;
+            text-decoration: none;
+            transition: .3s
+        }
+
+        .logo:hover {
+            transform: translateY(5px);
+            background-color: aqua;
+            color: rgb(173, 211, 34)
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px
+        }
+
+        .main-nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: .3s
+        }
+
+        .main-nav a:hover {
+            color: #e91e63
+        }
+
+        .dropdown {
+            position: relative
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: -20px;
+            width: 180px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .12)
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 9px 5px
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block
+        }
+
+        main {
+            padding-top: 75px;
+            background-color: #f8f8f8
+        }
+
+        .products-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 30px 80px
+        }
+
+        .products-heading {
+            text-align: center;
+            margin-bottom: 55px
+        }
+
+        .products-heading p {
+            color: #e91e63;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px
+        }
+
+        .products-heading h1 {
+            font-size: 42px;
+            color: #111;
+            margin-bottom: 12px
+        }
+
+        .products-heading span {
+            color: #666;
+            font-size: 16px
+        }
+
+        .product-section {
+            margin-bottom: 65px;
+            scroll-margin-top: 95px
+        }
+
+        .product-section h2 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e91e63
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+            transition: .3s ease
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .15)
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            display: block;
+            object-fit: cover;
+            transition: transform .4s ease
+        }
+
+        .product-card:hover img {
+            transform: scale(1.04)
+        }
+
+        .product-card h3 {
+            color: #222;
+            font-size: 18px;
+            margin: 18px 18px 8px
+        }
+
+        .product-card p {
+            color: #777;
+            font-size: 14px;
+            margin: 0 18px 12px
+        }
+
+        .sizes {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 12px 18px 15px
+        }
+
+        .sizes span {
+            width: 100%;
+            color: #555;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 2px
+        }
+
+        .sizes button {
+            width: 38px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .sizes button:hover {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff
+        }
+
+        .sizes button:focus {
+            background: #e91e63;
+            border-color: #e91e63;
+            color: #fff;
+            outline: none
+        }
+
+        .product-card strong {
+            display: block;
+            color: #e91e63;
+            font-size: 18px;
+            margin: 0 18px 20px
+        }
+
+        .site-footer {
+            background: #111;
+            color: #fff;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 55px 30px;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 28px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 17px;
+            margin-bottom: 18px;
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: .3s;
+        }
+
+        .footer-column a:hover {
+            color: #e91e63;
+            padding-left: 4px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 12px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            margin-left: 20px;
+        }
+
+        .footer-bottom a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="shopping.html" class="logo">CITYMALL</a>
+            <nav class="main-nav">
+                <a href="shopping.html">Home</a>
+                <a href="men.html">Men</a>
+                <a href="women.html">Women</a>
+                <a href="kid.html">Kids</a>
+                <div class="dropdown">
+                    <a href="footwear.html">Footwear</a>
+                    <div class="dropdown-menu">
+                        <a href="#mens-shoes">Men's Shoes</a>
+                        <a href="#womens-shoes">Women's Shoes</a>
+                        <a href="#sports">Sports Shoes</a>
+                        <a href="#sneakers">Sneakers</a>
+                        <a href="#sandals">Sandals</a>
+                        <a href="#formal">Formal Shoes</a>
+                    </div>
+                </div>
+                <a href="accessories.html">Accessories</a>
+                <a href="beauty.html">Beauty</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="products-page">
+            <div class="products-heading">
+                <p>SHOPMALL FOOTWEAR</p>
+                <h1>Footwear Collection</h1>
+                <span>Step into style and comfort for every occasion.</span>
+            </div>
+            <section class="product-section" id="mens-shoes">
+                <h2>Men's Footwear</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFD1i6sOJ1irrAfsHWVxsuUd83hC9dBGLtjApqFbYIow&s=10" alt="Men's Running Shoes">
+                        <h3>Men's Running Shoes</h3>
+                        <p>Lightweight Sports Shoes</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,499</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6t4H-prUkAh8_r4KSOAVn-OpF8MqGiU-44CAGg4SoSQ&s" alt="Men's Casual Sneakers">
+                        <h3>Men's Casual Sneakers</h3>
+                        <p>Everyday Comfortable Shoes</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,199</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD5dHl-BkwwtX29HJleSauW2XrP3eoLR3tzlpDlZqJXg&s=10" alt="Men's Formal Shoes">
+                        <h3>Men's Formal Shoes</h3>
+                        <p>Premium Classic Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRdEn6YrGLB3pt8Bzal4-BMaIOw2Nb1wbPRiUWABv1fA&s=10" alt="Men's Loafers">
+                        <h3>Classic Men's Loafers</h3>
+                        <p>Smart Casual Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,399</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="womens-shoes">
+                <h2>Women's Footwear</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHHey3iWkq_O1dDEWJ5A_e_CrQhVEF7NZOzrm9k_-4HQ&s=10" alt="Women's High Heels">
+                        <h3>Classic High Heels</h3>
+                        <p>Elegant Party Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1khN9tH0WOkS6edyc6Ipu-Bag5KXOGeYyCGamQrXBow&s=10" alt="Women's Sneakers">
+                        <h3>Women's Casual Sneakers</h3>
+                        <p>Trendy Everyday Shoes</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4WRsDngfe98cO_HzBkyYjAaedb0KeW862POcZYuuyA&s=10" alt="Women's Flats">
+                        <h3>Comfort Flats</h3>
+                        <p>Everyday Casual Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLLIJtSUDe1zWdFSpLXqymghMl9xqRx3lJBS9Devd9ew&s=10" alt="Women's Sandals">
+                        <h3>Stylish Sandals</h3>
+                        <p>Smart Casual Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,499</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="sports">
+                <h2>Sports Shoes</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvnwBM_-_3pFMwCCKziNsCQLW3wK2jwFGu61zHoyVXMw&s=10" alt="Running Sports Shoes">
+                        <h3>Performance Running Shoes</h3>
+                        <p>Lightweight Running Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,799</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1RLCAM0GnqCj4Z0L2cG4odRE9YpnSPDu_NXjaGr2UmA&s=10" alt="Training Shoes">
+                        <h3>Training Sports Shoes</h3>
+                        <p>Flexible Gym Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,599</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQMw4j_13BuXjxBZIN-eCW_GVTeMsjjECwrzx5wfZow&s=10" alt="Walking Shoes">
+                        <h3>Comfort Walking Shoes</h3>
+                        <p>Soft Cushion Walking Shoes</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyuT9Q6pjkw8hHci60RcEzUIEj9p0T83JnieQpRikF3g&s" alt="Training Sneakers">
+                        <h3>Active Training Sneakers</h3>
+                        <p>Comfortable Sports Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,699</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="sneakers">
+                <h2>Sneakers</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBIP89j4SUzwFiI5_V7r0rjgBWVvw05zQfQ2oitCRuqw&s=10" alt="White Sneakers">
+                        <h3>Classic White Sneakers</h3>
+                        <p>Clean Everyday Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,999</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0DePHBdGLcBQorqo4I33dKswgS6hRf34ouFxd3z108w&s=10" alt="Black Sneakers">
+                        <h3>Classic Black Sneakers</h3>
+                        <p>Modern Casual Style</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,099</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZuNRggrXwVEdghs6I9eoiZ4jOJd07Y6VLqMdGbTzogQ&s" alt="Fashion Sneakers">
+                        <h3>Fashion Sneakers</h3>
+                        <p>Trendy Streetwear Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,299</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWK9dNbyt3A-j1Ynw0XCIA4T5s6QnBr1U9I3XvXH7NiA&s=10" alt="High Top Sneakers">
+                        <h3>High Top Sneakers</h3>
+                        <p>Stylish Urban Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,499</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="sandals">
+                <h2>Sandals</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2xZTuXt--XOoFzyB44WkvDlLqxlyR2mYsILGPCMx2Q&s=10" alt="Casual Sandals">
+                        <h3>Casual Comfort Sandals</h3>
+                        <p>Lightweight Everyday Sandals</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹899</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk9g36kOys4rN6ZFWhAb7AfHhsmjurnZJJDBFlDdXldA&s=10" alt="Fashion Sandals">
+                        <h3>Fashion Sandals</h3>
+                        <p>Trendy Casual Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,099</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPY86I8EWvo3MR1gj1Rg8xt9yVMj8U8v2W8MDUnd_2Qw&s=10" alt="Leather Sandals">
+                        <h3>Premium Leather Sandals</h3>
+                        <p>Comfortable Leather Design</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,399</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMXzBKjUziaPuGMNlri9j7r3dJ8lPGhAzyoIN9fDSL_w&s" alt="Strappy Sandals">
+                        <h3>Stylish Strappy Sandals</h3>
+                        <p>Elegant Summer Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹1,199</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="product-section" id="formal">
+                <h2>Formal Shoes</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgaBTPVZLcntHmeffM8dL2GJoEmXH_yKm_SeN5swsdqg&s" alt="Black Formal Shoes">
+                        <h3>Classic Black Formal Shoes</h3>
+                        <p>Premium Office Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,499</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8pVBgJ8v5pxHbtZsPUWPaQKMGC1LYT0i6NsrSbUExzA&s=10" alt="Brown Formal Shoes">
+                        <h3>Brown Formal Shoes</h3>
+                        <p>Classic Professional Style</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,599</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2YlKlsEyfks1bbxs9xHgwAH_RzeXz94CLDtKaUs9r3w&s=10" alt="Oxford Shoes">
+                        <h3>Premium Oxford Shoes</h3>
+                        <p>Elegant Formal Collection</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹3,199</strong>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNNEEcLccJlMD9CiVJjnM6dAeykjcPQHnCf0sDwX-o7w&s=10" alt="Derby Shoes">
+                        <h3>Classic Derby Shoes</h3>
+                        <p>Smart Formal Footwear</p>
+                        <div class="sizes">
+                            <span>Size:</span>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button">11</button>
+                        </div>
+                        <strong>₹2,899</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+     <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>CITYMALL</h3>
+                <p>Your one-stop destination for fashion, beauty, footwear and more.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <a href="women.html">Women</a>
+                <a href="men.html">Men</a>
+                <a href="kid.html">Kids</a>
+                <a href="footwear.html">Footwear</a>
+            </div>
+            <div class="footer-column">
+                <h4>Categories</h4>
+                <a href="accessories.html">Accessories</a>
+                <a href="beauty.html">Beauty</a>
+                <a href="#">Offers</a>
+                <a href="#">New Arrivals</a>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping &amp; Delivery</a>
+                <a href="#">Returns &amp; Exchange</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CITYMALL. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

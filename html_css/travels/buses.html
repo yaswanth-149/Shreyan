@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBus - Bus Results</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgb(255, 74, 74);
+            padding: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bolder;
+            color: floralwhite;
+        }
+
+        .logo span {
+            color: cyan;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            color: floralwhite;
+            transition: 0.5s;
+        }
+
+        .nav-links a:hover {
+            color: cyan;
+        }
+
+        .nav-btn {
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .nav-btn:hover {
+            background-color: white;
+            color: rgb(255, 74, 74) !important;
+        }
+
+        .page-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .route-header {
+            background: linear-gradient(135deg, rgb(255, 74, 74), #ff7676);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .route-header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .route-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            background-color: #fff;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .filter-bar button {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: #444;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .filter-bar button:hover,
+        .filter-bar button.active {
+            background-color: rgb(255, 74, 74);
+            color: white;
+            border-color: rgb(255, 74, 74);
+        }
+
+        .bus-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .bus-card {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 0.8fr 1fr 1fr auto;
+            align-items: center;
+            gap: 20px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+            transition: 0.3s ease;
+        }
+
+        .bus-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .bus-card h2 {
+            font-size: 19px;
+            color: #222;
+            margin-bottom: 7px;
+        }
+
+        .bus-card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .bus-card strong {
+            display: block;
+            font-size: 20px;
+            color: #222;
+        }
+
+        .bus-card small {
+            display: block;
+            color: #777;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .duration {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .duration::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            margin-bottom: 8px;
+        }
+
+        .duration::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            margin-top: 8px;
+        }
+
+        .price strong {
+            color: rgb(255, 74, 74);
+            font-size: 21px;
+        }
+
+        .book-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: rgb(255, 74, 74);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            background-color: #e53935;
+            transform: scale(1.05);
+        }
+
+        .bus-card.hidden {
+            display: none;
+        }
+
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                Yash<span>Bus</span> 🚌
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-btn">Register</a>
+            </div>
+        </nav>
+    </header>
+    <div class="page-container">
+        <div class="route-header">
+            <h1 id="route">
+                Hyderabad → Bengaluru
+            </h1>
+            <p id="travelDate">
+                Available buses
+            </p>
+        </div>
+        <div class="filter-bar">
+            <button type="button"
+                class="filter-btn active"
+                data-filter="all">
+                All Buses
+            </button>
+            <button type="button"
+                class="filter-btn"
+                data-filter="ac">
+                AC
+            </button>
+            <button type="button"
+                class="filter-btn"
+                data-filter="non-ac">
+                Non-AC
+            </button>
+            <button type="button"
+                class="filter-btn"
+                data-filter="sleeper">
+                Sleeper
+            </button>
+            <button type="button"
+                class="filter-btn"
+                data-filter="seater">
+                Seater
+            </button>
+            <button type="button"
+                class="filter-btn"
+                data-filter="lowest">
+                Lowest Price
+            </button>
+        </div>
+        <div class="bus-list" id="busList">
+            <div class="bus-card"
+                data-type="ac sleeper"
+                data-price="899">
+                <div>
+                    <h2>VRL Travels</h2>
+                    <p>AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>21:30</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 30m
+                </div>
+                <div>
+                    <strong>06:00</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹899</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac sleeper"
+                data-price="999">
+                <div>
+                    <h2>Orange Travels</h2>
+                    <p>AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>22:00</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 15m
+                </div>
+                <div>
+                    <strong>06:15</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹999</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="non-ac seater"
+                data-price="649">
+                <div>
+                    <h2>TSRTC Express</h2>
+                    <p>Non-AC Seater</p>
+                </div>
+                <div>
+                    <strong>20:00</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    9h 00m
+                </div>
+                <div>
+                    <strong>05:00</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹649</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac seater"
+                data-price="749">
+                <div>
+                    <h2>IntrCity SmartBus</h2>
+                    <p>AC Seater</p>
+                </div>
+                <div>
+                    <strong>19:30</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 45m
+                </div>
+                <div>
+                    <strong>04:15</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹749</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="non-ac sleeper"
+                data-price="699">
+                <div>
+                    <h2>Morning Star Travels</h2>
+                    <p>Non-AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>21:00</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    9h 15m
+                </div>
+                <div>
+                    <strong>06:15</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹699</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac sleeper"
+                data-price="1099">
+                <div>
+                    <h2>SRS Travels</h2>
+                    <p>AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>22:30</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 20m
+                </div>
+                <div>
+                    <strong>06:50</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹1099</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="non-ac seater"
+                data-price="599">
+                <div>
+                    <h2>APSRTC Express</h2>
+                    <p>Non-AC Seater</p>
+                </div>
+                <div>
+                    <strong>18:45</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    9h 30m
+                </div>
+                <div>
+                    <strong>04:15</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹599</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac seater"
+                data-price="799">
+                <div>
+                    <h2>Go Tour Travels</h2>
+                    <p>AC Seater</p>
+                </div>
+                <div>
+                    <strong>20:45</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 40m
+                </div>
+                <div>
+                    <strong>05:25</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹799</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="non-ac sleeper"
+                data-price="679">
+                <div>
+                    <h2>SVR Travels</h2>
+                    <p>Non-AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>21:45</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    9h 10m
+                </div>
+                <div>
+                    <strong>06:55</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹679</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac sleeper"
+                data-price="1199">
+                <div>
+                    <h2>KSRTC Airavat</h2>
+                    <p>AC Sleeper</p>
+                </div>
+                <div>
+                    <strong>21:15</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 10m
+                </div>
+                <div>
+                    <strong>05:25</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹1199</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="non-ac seater"
+                data-price="629">
+                <div>
+                    <h2>Rajdhani Express</h2>
+                    <p>Non-AC Seater</p>
+                </div>
+                <div>
+                    <strong>19:00</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    9h 05m
+                </div>
+                <div>
+                    <strong>04:05</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹629</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+            <div class="bus-card"
+                data-type="ac seater"
+                data-price="849">
+                <div>
+                    <h2>Morning Star AC</h2>
+                    <p>AC Seater</p>
+                </div>
+                <div>
+                    <strong>20:15</strong>
+                    <small>Hyderabad</small>
+                </div>
+                <div class="duration">
+                    8h 35m
+                </div>
+                <div>
+                    <strong>04:50</strong>
+                    <small>Bengaluru</small>
+                </div>
+                <div class="price">
+                    <strong>₹849</strong>
+                    <small>per passenger</small>
+                </div>
+                <a href="seats.html" class="book-btn">
+                    Select
+                </a>
+            </div>
+        </div>
+        <div id="noResults">
+            No buses found for this filter.
+        </div>
+    </div>
+    <script>
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+        const buses =
+            document.querySelectorAll(".bus-card");
+        const noResults =
+            document.getElementById("noResults");
+        filterButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+                this.classList.add("active");
+                const filter =
+                    this.getAttribute("data-filter");
+                if (filter === "lowest") {
+                    let busArray =
+                        Array.from(buses);
+                    busArray.sort((a, b) => {
+                        return (
+                            Number(a.dataset.price) -
+                            Number(b.dataset.price)
+                        );
+                    });
+                    const busList =
+                        document.getElementById("busList");
+                    busArray.forEach(bus => {
+                        busList.appendChild(bus);
+                    });
+                    buses.forEach(bus => {
+                        bus.classList.remove("hidden");
+                    });
+                    noResults.style.display = "none";
+                    return;
+                }
+                let visibleCount = 0;
+                buses.forEach(bus => {
+                    const type =
+                        bus.getAttribute("data-type");
+                    if (
+                        filter === "all" ||
+                        type.includes(filter)
+                    ) {
+                        bus.classList.remove("hidden");
+                        visibleCount++;
+                    } else {
+                        bus.classList.add("hidden");
+                    }
+                });
+                if (visibleCount === 0) {
+                    noResults.style.display = "block";
+                } else {
+                    noResults.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
